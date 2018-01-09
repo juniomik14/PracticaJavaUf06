@@ -41,7 +41,7 @@ public class Main {
             System.out.println("7.Eliminar Pedido");/*devolver stock a articulo*/
             System.out.println("8.Ver Todos los Pedidos");
             System.out.println("9.Ver todos los clientes");
-            System.out.println("10.Ver todos los articulos");
+            System.out.println("10.Ver todos los articulos");     
             System.out.println("11.Salir");
             opcMenu = Integer.parseInt(cadena.readLine());
 
