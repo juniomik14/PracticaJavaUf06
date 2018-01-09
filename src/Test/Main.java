@@ -6,6 +6,7 @@
 package Test;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
@@ -14,16 +15,18 @@ import java.io.InputStreamReader;
  */
 public class Main {
     
-    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    static String cadena;
+    
+        public static BufferedReader cadena = new BufferedReader(new InputStreamReader(System.in));
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        menu();
 
     }
 
-    static void menu() {
+    static void menu() throws IOException {
         
         int opcMenu = 0;
 
@@ -40,7 +43,7 @@ public class Main {
             System.out.println("9.Ver todos los clientes");
             System.out.println("10.Ver todos los articulos");
             System.out.println("11.Salir");
-        } while (opcMenu != 11);
+            opcMenu = Integer.parseInt(cadena.readLine());
 
         switch (opcMenu) {
             case 1:
@@ -86,8 +89,10 @@ public class Main {
             default:
 
                 break;
+                
 
         }
+        } while (opcMenu != 11);
 
     }
 
