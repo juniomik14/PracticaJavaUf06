@@ -37,8 +37,8 @@ public class Main {
             System.out.println("3.Crear Articulo");
             System.out.println("4.Eliminar Articulo");
             System.out.println("5.Update stock del Articulo");
-            System.out.println("6.Crear Pedido");
-            System.out.println("7.Eliminar Pedido");
+            System.out.println("6.Crear Pedido");/*Restar stock artiuculo, comprobar que articulo existe*/
+            System.out.println("7.Eliminar Pedido");/*devolver stock a articulo*/
             System.out.println("8.Ver Todos los Pedidos");
             System.out.println("9.Ver todos los clientes");
             System.out.println("10.Ver todos los articulos");
