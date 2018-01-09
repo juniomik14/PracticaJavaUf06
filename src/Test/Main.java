@@ -8,6 +8,11 @@ package Test;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -17,6 +22,10 @@ public class Main {
     
     
         public static BufferedReader cadena = new BufferedReader(new InputStreamReader(System.in));
+        private static Connection connection;
+    private static Statement statement;
+    private static PreparedStatement preparedStatement;
+    private static ResultSet resultSet;
 
     /**
      * @param args the command line arguments
@@ -93,6 +102,15 @@ public class Main {
 
         }
         } while (opcMenu != 11);
+
+    }
+    
+     private static void Crearcliente() throws SQLException {
+        connection = conexionbasedatos.Obtenerinstancia();
+        statement = connection.createStatement();
+        
+        statement.executeUpdate("INSERT INTO departamentos (`nombre`)" + "VALUES('" + "Recursos Humanos" + "')");
+
 
     }
 
