@@ -105,19 +105,29 @@ public class Main {
 
     }
     
-     private static void Crearcliente() throws SQLException {
+     private static void Crearcliente() throws SQLException, IOException {
         connection = conexionbasedatos.Obtenerinstancia();
         statement = connection.createStatement();
+        String dni, nombre;
         
-        statement.executeUpdate("INSERT INTO cliente VALUES('" + "0" + "','" + "Axel" + "')");
+         System.out.println("Inserta el dni ");
+         dni = cadena.readLine();
+         System.out.println("Inserta el nombre");
+         nombre = cadena.readLine();
+        
+        statement.executeUpdate("INSERT INTO cliente VALUES('" + dni + "','" + nombre + "')");
 
 
     }
-     private static void Borrarcliente() throws SQLException {
+     private static void Borrarcliente() throws SQLException, IOException {
         connection = conexionbasedatos.Obtenerinstancia();
         statement = connection.createStatement();
+        String dni;
+         System.out.println("Inserta el dni del usuario a borrar");
+         dni = cadena.readLine();
         
-        statement.executeUpdate("DELETE FROM `cliente` WHERE(dni = 0)");
+        statement.executeUpdate("DELETE FROM `cliente` WHERE(dni ="+ dni+")");
+        
 
 
     }
