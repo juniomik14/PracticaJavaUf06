@@ -105,7 +105,7 @@ public class Main {
 
     }
     
-     private static void Crearcliente() throws SQLException {
+     private static void crearcliente() throws SQLException {
         connection = conexionbasedatos.Obtenerinstancia();
         statement = connection.createStatement();
         
@@ -113,7 +113,7 @@ public class Main {
 
 
     }
-     private static void Borrarcliente() throws SQLException {
+     private static void borrarcliente() throws SQLException {
         connection = conexionbasedatos.Obtenerinstancia();
         statement = connection.createStatement();
         
@@ -134,7 +134,7 @@ public class Main {
         }
 
     }
-    private static void VerTodosClientes() throws SQLException {
+    private static void verTodosClientes() throws SQLException {
         connection = conexionbasedatos.Obtenerinstancia();
         statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("Select * from cliente");
