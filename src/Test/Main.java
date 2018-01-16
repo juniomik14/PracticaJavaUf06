@@ -110,7 +110,7 @@ public class Main {
         connection = conexionbasedatos.Obtenerinstancia();
         statement = connection.createStatement();
         
-        statement.executeUpdate("INSERT INTO departamentos (`nombre`)" + "VALUES('" + "Recursos Humanos" + "')");
+        statement.executeUpdate("INSERT INTO cliente VALUES('" + "24458598" + "','" + "Axel" + "')");
 
 
     }
