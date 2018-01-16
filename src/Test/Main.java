@@ -30,12 +30,12 @@ public class Main {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, SQLException {
         menu();
 
     }
 
-    static void menu() throws IOException {
+    static void menu() throws IOException, SQLException {
         
         int opcMenu = 0;
 
@@ -57,6 +57,7 @@ public class Main {
         switch (opcMenu) {
             case 1:
                 System.out.println("---Crear Cliente---");
+                Crearcliente();
 
                 break;
             case 2:
