@@ -90,7 +90,6 @@ public class Main {
                 break;
             case 9:
                 System.out.println("---Ver todos los clientes---");
-                Verliente();
                 break;
             case 10:
                 System.out.println("---Ver todos los articulos---");
@@ -122,15 +121,7 @@ public class Main {
 
 
     }
-     private static void Verliente() throws SQLException {
-        connection = conexionbasedatos.Obtenerinstancia();
-        statement = connection.createStatement();
-        
-        
-        resultSet = statement.executeQuery("SELECT * FROM cliente");
-        while(resultSet.next()){
-            System.out.println(resultSet.getString("dni") + resultSet.getString(" nombre") );
-        }
-    }
+     
+    
 
 }
