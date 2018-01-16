@@ -90,7 +90,7 @@ public class Main {
                 break;
             case 9:
                 System.out.println("---Ver todos los clientes---");
-
+                Verliente();
                 break;
             case 10:
                 System.out.println("---Ver todos los articulos---");
@@ -111,6 +111,14 @@ public class Main {
         statement = connection.createStatement();
         
         statement.executeUpdate("INSERT INTO cliente VALUES('" + "24458598" + "','" + "Axel" + "')");
+
+
+    }
+     private static void Verliente() throws SQLException {
+        connection = conexionbasedatos.Obtenerinstancia();
+        statement = connection.createStatement();
+        
+        statement.execute("SELECT * FROM cliente");
 
 
     }
