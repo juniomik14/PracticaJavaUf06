@@ -62,7 +62,7 @@ public class Main {
                 break;
             case 2:
                 System.out.println("---Eliminar Cliente---");
-
+                Borrarcliente();
                 break;
             case 3:
                 System.out.println("---Crear Articulo---");
@@ -110,7 +110,15 @@ public class Main {
         connection = conexionbasedatos.Obtenerinstancia();
         statement = connection.createStatement();
         
-        statement.executeUpdate("INSERT INTO cliente VALUES('" + "24458598" + "','" + "Axel" + "')");
+        statement.executeUpdate("INSERT INTO cliente VALUES('" + "0" + "','" + "Axel" + "')");
+
+
+    }
+     private static void Borrarcliente() throws SQLException {
+        connection = conexionbasedatos.Obtenerinstancia();
+        statement = connection.createStatement();
+        
+        statement.executeUpdate("DELETE FROM `cliente` WHERE(dni = 0)");
 
 
     }
@@ -118,9 +126,11 @@ public class Main {
         connection = conexionbasedatos.Obtenerinstancia();
         statement = connection.createStatement();
         
-        statement.execute("SELECT * FROM cliente");
-
-
+        
+        resultSet = statement.executeQuery("SELECT * FROM cliente");
+        while(resultSet.next()){
+            System.out.println(resultSet.getString("dni") + resultSet.getString(" nombre") );
+        }
     }
 
 }
