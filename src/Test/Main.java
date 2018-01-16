@@ -57,7 +57,7 @@ public class Main {
         switch (opcMenu) {
             case 1:
                 System.out.println("---Crear Cliente---");
-                Crearcliente();
+                crearcliente();
 
                 break;
             case 2:
@@ -66,6 +66,7 @@ public class Main {
                 break;
             case 3:
                 System.out.println("---Crear Articulo---");
+                Creararticulo();
 
                 break;
             case 4:
@@ -105,19 +106,45 @@ public class Main {
 
     }
     
-     private static void crearcliente() throws SQLException {
+
+     private static void crearcliente() throws SQLException, IOException {
         connection = conexionbasedatos.Obtenerinstancia();
         statement = connection.createStatement();
+        String dni, nombre;
         
-        statement.executeUpdate("INSERT INTO cliente VALUES('" + "0" + "','" + "Axel" + "')");
+         System.out.println("Inserta el dni ");
+         dni = cadena.readLine();
+         System.out.println("Inserta el nombre");
+         nombre = cadena.readLine();
+        
+        statement.executeUpdate("INSERT INTO cliente VALUES('" + dni + "','" + nombre + "')");
 
 
     }
-     private static void borrarcliente() throws SQLException {
+
+     private static void Creararticulo() throws SQLException, IOException {
         connection = conexionbasedatos.Obtenerinstancia();
         statement = connection.createStatement();
+        String nombre;
+        int numeroserie,dni = 0;     
+         System.out.println("Inserta el numero de serie ");
+         numeroserie = Integer.parseInt(cadena.readLine());
+         System.out.println("Inserta el nombre");
+         nombre = cadena.readLine();
         
-        statement.executeUpdate("DELETE FROM `cliente` WHERE(dni = 0)");
+        statement.executeUpdate("INSERT INTO cliente VALUES('" + dni + "','" + nombre + "')");
+         System.out.println("Articulo creado correctamente");
+    }
+     private static void Borrarcliente() throws SQLException, IOException {
+        connection = conexionbasedatos.Obtenerinstancia();
+        statement = connection.createStatement();
+        String dni;
+         System.out.println("Inserta el dni del usuario a borrar");
+         dni = cadena.readLine();
+        
+        statement.executeUpdate("DELETE FROM `cliente` WHERE(dni ="+ dni+")");
+         System.out.println("Cliente borrado correctamente");
+        
 
 
     }
