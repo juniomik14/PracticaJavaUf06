@@ -121,6 +121,41 @@ public class Main {
 
 
     }
+    private static void verTodosArticulos() throws SQLException {
+        connection = conexionbasedatos.Obtenerinstancia();
+        statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("Select * from Articulo");
+        while (rs.next()) {
+            int numSerie = rs.getInt("numSerie");
+            String name = rs.getString("nombre");
+            int stock = rs.getInt("stock");
+
+            System.out.println("El Articulo con numero de serie " + numSerie+" con nombre "+name+" i con un stock de "+stock );
+        }
+
+    }
+    private static void VerTodosClientes() throws SQLException {
+        connection = conexionbasedatos.Obtenerinstancia();
+        statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("Select * from cliente");
+        while (rs.next()) {
+            String dni = rs.getString("dni");
+            String name = rs.getString("nombre");
+            System.out.println("El cliente con nombre " + name + " y Dni: " + dni);
+        }
+
+    }
+        private static void verTodosPedidos() throws SQLException {
+        connection = conexionbasedatos.Obtenerinstancia();
+        statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("Select * from pedido");
+        while (rs.next()) {
+            String dni = rs.getString("dni");
+            String name = rs.getString("nombre");
+            System.out.println("El cliente con nombre " + name + " y Dni: " + dni);
+        }
+
+    }
      
     
 
