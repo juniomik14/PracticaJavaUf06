@@ -96,7 +96,7 @@ public class Main {
 
                 break;
             default:
-
+                System.out.println("¡Selecciona una opcion del menu!");
                 break;
                 
 

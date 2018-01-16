@@ -23,6 +23,7 @@ public class conexionbasedatos {
     public static final String url = "jdbc:mysql://localhost:3306/javapractica";
     public static final String username = "root";
     public static final String password = "";
+    
     private conexionbasedatos() {
     }
 
