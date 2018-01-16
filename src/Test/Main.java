@@ -66,6 +66,7 @@ public class Main {
                 break;
             case 3:
                 System.out.println("---Crear Articulo---");
+                Creararticulo();
 
                 break;
             case 4:
@@ -119,6 +120,22 @@ public class Main {
 
 
     }
+     private static void Creararticulo() throws SQLException, IOException {
+        connection = conexionbasedatos.Obtenerinstancia();
+        statement = connection.createStatement();
+        String nombre;
+        int numeroserie;
+        
+         System.out.println("Inserta el numero de serie ");
+         numeroserie = Integer.parseInt(cadena.readLine());
+         System.out.println("Inserta el nombre");
+         nombre = cadena.readLine();
+        
+        statement.executeUpdate("INSERT INTO cliente VALUES('" + dni + "','" + nombre + "')");
+         System.out.println("Articulo creado correctamente");
+
+
+    }
      private static void Borrarcliente() throws SQLException, IOException {
         connection = conexionbasedatos.Obtenerinstancia();
         statement = connection.createStatement();
@@ -127,6 +144,7 @@ public class Main {
          dni = cadena.readLine();
         
         statement.executeUpdate("DELETE FROM `cliente` WHERE(dni ="+ dni+")");
+         System.out.println("Cliente borrado correctamente");
         
 
 
