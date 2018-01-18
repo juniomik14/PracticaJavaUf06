@@ -82,7 +82,7 @@ public class Main {
                     break;
                 case 7:
                     System.out.println("---Eliminar Pedido---");
-
+                    borrarPedido();
                     break;
                 case 8:
                     System.out.println("---Ver Todos los Pedidos---");
@@ -208,8 +208,8 @@ public class Main {
         ResultSet rs = statement.executeQuery("Select * from pedido");
         while (rs.next()) {
             String dni = rs.getString("dni");
-            String name = rs.getString("nombre");
-            System.out.println("El cliente con nombre " + name + " y Dni: " + dni);
+            String name = rs.getString("numSerie");
+            System.out.println("El pedido con nombre " + name + " y Dni: " + dni);
         }
 
     }
@@ -242,6 +242,17 @@ public class Main {
         }else{
             System.out.println("El producto solicitado tiene un stock inferior al que requiere");
         }
+
+    }
+    private static void borrarPedido() throws SQLException, IOException {
+        connection = conexionbasedatos.Obtenerinstancia();
+        statement = connection.createStatement();
+        int numpedido;
+        System.out.println("Inserta el numero del pedido a borrar");
+        numpedido = Integer.parseInt(cadena.readLine());
+
+        statement.executeUpdate("DELETE FROM `pedido` WHERE(idPedido =" + numpedido + ")");
+        System.out.println("Pedido borrado correctamente");
 
     }
 
