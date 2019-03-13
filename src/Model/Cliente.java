@@ -21,6 +21,9 @@ public class Cliente {
         this.direccion = direccion;
     }
 
+    
+    
+
     public String getDni() {
         return dni;
     }
