@@ -112,6 +112,7 @@ public class Main {
 
     private static void crearcliente() throws SQLException, IOException {
         connection = conexionbasedatos.Obtenerinstancia();
+<<<<<<< HEAD
         String dni, nombre, direccion;
 
         System.out.println("Inserta el dni ");
@@ -131,6 +132,17 @@ public class Main {
 
         preparedStatement.executeUpdate();
         JOptionPane.showMessageDialog(null, "Cliente " + nombre + "ha sido insertado satisfactoriamente.");
+=======
+        statement = connection.createStatement();
+        String dni, nombre;
+
+        System.out.println("Inserta el dni ");
+        dni = cadena.readLine();
+        System.out.println("Inserta el nombre");
+        nombre = cadena.readLine();
+
+        statement.executeUpdate("INSERT INTO cliente VALUES('" + dni + "','" + nombre + "')");
+>>>>>>> 02dcb67c9ca067d3635777741c073a641b58826c
 
     }
 
@@ -138,6 +150,7 @@ public class Main {
         connection = conexionbasedatos.Obtenerinstancia();
         String nombre;
         int numeroserie, stock;
+<<<<<<< HEAD
 
         System.out.println("Inserta el numero de serie ");
         numeroserie = Integer.parseInt(cadena.readLine());
@@ -169,11 +182,39 @@ public class Main {
 
     }
 
+=======
+
+        System.out.println("Inserta el numero de serie ");
+        numeroserie = Integer.parseInt(cadena.readLine());
+        System.out.println("Inserta el nombre");
+        nombre = cadena.readLine();
+        System.out.println("Inserta el stock");
+        stock = Integer.parseInt(cadena.readLine());
+
+        statement.executeUpdate("INSERT INTO articulo VALUES('" + numeroserie + "','" + nombre + "','" + stock + "')");
+        System.out.println("Articulo creado correctamente");
+
+    }
+
+    private static void borrararticulo() throws SQLException, IOException {
+        connection = conexionbasedatos.Obtenerinstancia();
+        statement = connection.createStatement();
+        int numeroserie;
+        System.out.println("Inserta el numero de serie del articulo a borrar");
+        numeroserie = Integer.parseInt(cadena.readLine());
+
+        statement.executeUpdate("DELETE FROM `articulo` WHERE(numSerie =" + numeroserie + ")");
+        System.out.println("Articulo borrado correctamente");
+
+    }
+
+>>>>>>> 02dcb67c9ca067d3635777741c073a641b58826c
     private static void borrarcliente() throws SQLException, IOException {
         connection = conexionbasedatos.Obtenerinstancia();
         String dni;
         System.out.println("Inserta el dni del usuario a borrar");
         dni = cadena.readLine();
+<<<<<<< HEAD
         preparedStatement = connection.prepareStatement("DELETE FROM cliente WHERE(dni = ?)");
         preparedStatement.setString(1, dni);
         preparedStatement.executeUpdate();
@@ -184,12 +225,24 @@ public class Main {
 
     private static void cambiarstock() throws SQLException, IOException {
         connection = conexionbasedatos.Obtenerinstancia();
+=======
+
+        statement.executeUpdate("DELETE FROM `cliente` WHERE(dni =" + dni + ")");
+        System.out.println("Cliente borrado correctamente");
+
+    }
+
+    private static void cambiarstock() throws SQLException, IOException {
+        connection = conexionbasedatos.Obtenerinstancia();
+        statement = connection.createStatement();
+>>>>>>> 02dcb67c9ca067d3635777741c073a641b58826c
         int numeroserie, stock;
 
         System.out.println("Inserta el numero de articulo a modificar stock");
         numeroserie = Integer.parseInt(cadena.readLine());
         System.out.println("Inserte stock deseado");
         stock = Integer.parseInt(cadena.readLine());
+<<<<<<< HEAD
         preparedStatement = connection.prepareStatement("UPDATE `articulo` SET `stock`= ?  WHERE `numSerie` = ? ");
         preparedStatement.setInt(2, numeroserie);
         preparedStatement.setInt(1, stock);
@@ -197,6 +250,11 @@ public class Main {
         
         System.out.println("Stock actualizado correctamente");
         JOptionPane.showMessageDialog(null, "Articulo con numero de serie " + numeroserie + " su stock actualizado es de: " + stock);
+=======
+
+        statement.executeUpdate("UPDATE `articulo` SET `stock`=" + stock + " WHERE `numSerie` =" + numeroserie);
+        System.out.println("Cliente borrado correctamente");
+>>>>>>> 02dcb67c9ca067d3635777741c073a641b58826c
 
     }
 
@@ -234,6 +292,7 @@ public class Main {
             String dni = rs.getString("dni");
             String name = rs.getString("numSerie");
             System.out.println("El pedido con nombre " + name + " y Dni: " + dni);
+<<<<<<< HEAD
         }
 
     }
@@ -282,6 +341,42 @@ public class Main {
         }
 
     }
+=======
+        }
+
+    }
+
+    private static void crearPedido() throws SQLException, IOException {
+        int numserie, stockdisp = 0, stockpedido, stockfinal;
+        System.out.println("Inserta el numero de serie del articulo deseado");
+        numserie = Integer.parseInt(cadena.readLine());
+        connection = conexionbasedatos.Obtenerinstancia();
+        statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("SELECT `stock` FROM `articulo` WHERE `numSerie` = " + numserie);
+        while (rs.next()) {
+            stockdisp = rs.getInt("stock");
+            System.out.println("Stock disponible " + stockdisp);
+        }
+        rs.close();
+        System.out.println("Inserta stock deseado adquirir");
+        stockpedido = Integer.parseInt(cadena.readLine());
+        if (stockpedido <= stockdisp) {
+            System.out.println("Compra aceptada");
+            stockfinal = stockdisp - stockpedido;
+            
+                    
+            rs.close();
+            System.out.println("Inserta el dni del cliente");
+            String dni = cadena.readLine();
+           statement.executeUpdate("INSERT INTO `pedido`(`dni`, `numSerie`, `cantidad`) VALUES('" + dni + "','" + numserie + "','" + stockpedido + "')");
+           statement.executeUpdate("UPDATE `articulo` SET `stock`=" + stockfinal + " WHERE `numSerie` =" + numserie);
+            System.out.println("Pedido creado correctamente");
+        }else{
+            System.out.println("El producto solicitado tiene un stock inferior al que requiere");
+        }
+
+    }
+>>>>>>> 02dcb67c9ca067d3635777741c073a641b58826c
     private static void borrarPedido() throws SQLException, IOException {
         connection = conexionbasedatos.Obtenerinstancia();
         statement = connection.createStatement();
@@ -289,10 +384,14 @@ public class Main {
         System.out.println("Inserta el numero del pedido a borrar");
         numpedido = Integer.parseInt(cadena.readLine());
 
+<<<<<<< HEAD
         
         preparedStatement = connection.prepareStatement("DELETE FROM `pedido` WHERE(idPedido =?)");
         preparedStatement.setInt(1, numpedido);
         preparedStatement.executeUpdate();
+=======
+        statement.executeUpdate("DELETE FROM `pedido` WHERE(idPedido =" + numpedido + ")");
+>>>>>>> 02dcb67c9ca067d3635777741c073a641b58826c
         System.out.println("Pedido borrado correctamente");
 
     }
